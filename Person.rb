@@ -7,7 +7,7 @@ class Person
     @name = name
     @dob = dob
     init_method
-    initData
+    init_data
   end
 
 end
