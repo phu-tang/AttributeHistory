@@ -12,7 +12,7 @@ module AttributeHistory
         if @history_bundle.empty?
           return nil
         else
-          return @history_bundle[temp]
+          return @history_bundle[var.to_s]
         end
       end
 
@@ -23,7 +23,7 @@ module AttributeHistory
         if @history_bundle.empty?
           return false
         else
-          return true
+          return(@history_bundle.has_key?(var.to_s))
         end
       end
 
@@ -31,8 +31,10 @@ module AttributeHistory
       temp = var.to_s
       temp = temp.delete("@");
       self.class.send(:define_method, "#{temp}=".to_sym) do |value|
-        @history_bundle[temp+"_was"]= instance_variable_get("@"+temp)
-        instance_variable_set("@" + temp.to_s, value)
+        if (value != instance_variable_get(var.to_s))
+          @history_bundle[var.to_s]= instance_variable_get(var.to_s)
+          instance_variable_set(var.to_s, value)
+        end
       end
     end
   end
