@@ -2,15 +2,18 @@ require './AttributeHistory'
 class Person
   include AttributeHistory
   attr :name, :dob
+
   def initialize(name, dob)
     @name = name
     @dob = dob
+    init_method
   end
 
 end
 
-a = Person.new("Phu","1/1/2016")
+
+a = Person.new("a","b")
 puts a.name
 puts a.dob
-puts a.get_all_vars
-put a.was_name
+a.get_all_vars
+a.name_was
