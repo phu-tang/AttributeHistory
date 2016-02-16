@@ -18,11 +18,7 @@ module AttributeHistory
     temp = var.to_s + "_was"
     temp = temp.delete("@");
     self.class.send(:define_method, temp.to_s) do
-      if @history_bundle.empty?
-        return nil
-      else
         return @history_bundle[var.to_s]
-      end
     end
   end
 
@@ -31,11 +27,7 @@ module AttributeHistory
     temp = var.to_s + "_changed"
     temp = temp.delete("@");
     self.class.send(:define_method, temp.to_s) do
-      if @history_bundle.empty?
-        return false
-      else
         return(@history_bundle.has_key?(var.to_s))
-      end
     end
   end
 
