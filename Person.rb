@@ -6,8 +6,6 @@ class Person
   def initialize(name, dob)
     @name = name
     @dob = dob
-    init_method
-    init_data
   end
 
 end
@@ -19,9 +17,11 @@ puts a.dob
 
 a.name = "1"
 
+puts a.name
+
 puts a.dob_was.to_s
-puts a.dob_changed
+puts a.dob_changed?
 
 puts a.name_was
-puts a.name_changed
+puts a.name_changed?
 
