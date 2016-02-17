@@ -1,4 +1,4 @@
-require './AttributeHistory'
+require './attribute_history'
 class Person
   include AttributeHistory
   attr :name, :dob
