@@ -1,10 +1,6 @@
 module AttributeHistory
   @history_bundle
 
-  def self.included(base)
-
-  end
-
   def method_missing(method_id, *arguments, &block)
 
     #define setter method
@@ -41,7 +37,7 @@ module AttributeHistory
         super
       end
     end
-    
+
     super
   end
 
