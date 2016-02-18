@@ -22,12 +22,19 @@ module HtmlParser
 
 
   def set_data_to_variable
-    
+
     @@attributes.each do |attribute|
       var_name = "div#"+attribute.to_s
-      value = @html_content.css(var_name)[0].text
-      instance_variable_set("@"+attribute.to_s, value)
-
+      if (@html_content.css(var_name).length >1)
+        value =[]
+        for i in 0..@html_content.css(var_name).length-1
+          value << (@html_content.css(var_name)[i].text)
+        end
+        instance_variable_set("@"+attribute.to_s, value)
+      else
+        value = @html_content.css(var_name)[0].text
+        instance_variable_set("@"+attribute.to_s, value)
+      end
     end
   end
 
