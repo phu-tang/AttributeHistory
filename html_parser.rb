@@ -25,7 +25,7 @@ module HtmlParser
     
     @@attributes.each do |attribute|
       var_name = "div#"+attribute.to_s
-      value = @html_content.css(var_name).text
+      value = @html_content.css(var_name)[0].text
       instance_variable_set("@"+attribute.to_s, value)
 
     end
